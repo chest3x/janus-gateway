@@ -354,6 +354,8 @@ int janus_pp_h264_process(FILE *file, janus_pp_frame_packet *list, int *working)
 					buffer += psize;
 					tot -= psize;
 				}
+				if(tmp->next == NULL || tmp->next->ts > tmp->ts)
+					break;
 				/* Done, we'll wait for the next video data to write the frame */
 				tmp = tmp->next;
 				continue;
